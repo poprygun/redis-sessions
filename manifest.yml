@@ -1,0 +1,7 @@
+---
+applications:
+- name: redis-sessions
+  path: target/redis-sessions.jar
+  instances: 2
+  services:
+    - redis-service

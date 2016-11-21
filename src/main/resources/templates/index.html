@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Session Data</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Key</th>
+    </tr>
+    <tr th:each="key  : ${session.sessionKeys}">
+        <td th:text="${key}">1</td>
+    </tr>
+</table>
+<a th:href="${(#mvc.url('SSC#clearSession')).build()}">Clear Session</a>
+</body>
+</html>
