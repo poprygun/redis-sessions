@@ -5,12 +5,10 @@
     <title>Session Data</title>
 </head>
 <body>
-<table>
-    <tr>
-        <th>Key</th>
-    </tr>
-    <tr th:each="key  : ${session.sessionKeys}">
-        <td th:text="${key}">1</td>
+<table border="1px solid black">
+    <tr th:each="element : ${sessionData}">
+        <td th:text="${#strings.toString(element.key)}">key</td>
+        <td th:text="${#strings.toString(element.value)}">value</td>
     </tr>
 </table>
 <a th:href="${(#mvc.url('SSC#clearSession')).build()}">Clear Session</a>

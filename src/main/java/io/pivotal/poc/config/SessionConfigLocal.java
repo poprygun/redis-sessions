@@ -11,17 +11,13 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 @EnableRedisHttpSession
 @Profile("!cloud")
 public class SessionConfigLocal {
-    @Value("${spring.redis.host}")
-    private String springRedisHost;
-
-    @Value("${spring.redis.port:6379}")
-    private int springRedisPort;
 
     @Bean
-    public JedisConnectionFactory connectionFactory() {
+    public JedisConnectionFactory connectionFactory(@Value("${spring.redis.host}") String host
+                                                    , @Value("${spring.redis.port}") int port) {
         JedisConnectionFactory connection = new JedisConnectionFactory();
-        connection.setPort(springRedisPort);
-        connection.setHostName(springRedisHost);
+        connection.setPort(port);
+        connection.setHostName(host);
         return connection;
     }
 }
